@@ -4,7 +4,7 @@
 *At the moment, it only works for Meteor.js.*
 
 ##Install
-Include domhooks.js before class or id strings that uses the schema.
+Include domhooks.js before class or id strings that use the schema.
 
 ##Usage
 To use DomHooks, create a schema then wrap a class or id string to validate it against the schema.
@@ -13,11 +13,11 @@ To use DomHooks, create a schema then wrap a class or id string to validate it a
 Declare schemas before using the wrapper. A schema is a plain object with two requirements, 
 
 1. values are unique
-2. includes the key `'dh-schema-title'`, for example, `'dh-shema-title': 'message'` 
+2. includes the key `'dh-schema-title'`, for example, `'dh-schema-title': 'message'` 
 
 ```javascript
 var messageSchema = {
-  'dh-shema-title': 'message',
+  'dh-schema-title': 'message',
   'message': '.message',
   'style': {
     'normal': '.message__style'
@@ -39,23 +39,23 @@ var messageSchema = {
 Include a schema.
 
 ```javascript
-var messageSchema = {'dh-shema-title': 'message', ... };
+var messageSchema = {'dh-schema-title': 'message', ... };
 DomHooks.schema(messageSchema);
 ```
 
-####dh()
+###dh()
 
 Validates a class or id string against a schema. Returns the string that is inside it. 
 
 ```javascript
-// inline
 var msg = dh('.message');
 $(msg).on('click', showMessage);
+
 //inline style
 $(dh('.message')).on('click', showMessage);
 ```
 
-Prints errors to the console and continues program execution.
+If a class or id string is invalid, an error-like message prints to the console and continues program execution.
 
 *missing*
 
@@ -65,13 +65,15 @@ The tag is missing from the schema. Prints to console the tag, file path, and li
 
 *invalid*
 
-The tag is not a string. Prints the tag, file path, and line number.
+The input is not a string. Prints the input, file path, and line number.
 
 `DomHook Invalid: non-string "1" found at file path "client/chatroom.js", line 30`
 
-#####dh().path();
+####dh().path();
 
-Prints to console the location of both the tag and it's schema initialization.
+Prints two messages to the console.
+
+`dh('messages').path();`
 
 *path*
 
@@ -81,7 +83,7 @@ Prints to console the tag, file path, and line number.
 
 *schema*
 
-Prints to console the tag and the schema's file path and line.
+Prints to console the tag and the schema initialization's file path and line number.
 
 `DomHook Schema: schema init for ".message__context" is at file path "client/schemas/message.js", line 12`
 
