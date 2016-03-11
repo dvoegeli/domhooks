@@ -69,7 +69,7 @@ The input is not a string. Prints the input, file path, and line number.
 
 `DomHook Invalid: non-string "1" found at file path "client/chatroom.js", line 30`
 
-####dh().path();
+####dh().path()
 
 Prints two messages to the console.
 
