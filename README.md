@@ -10,23 +10,26 @@ Include domhooks.js before class or id strings that use the schema.
 To use DomHooks, create a schema then wrap a class or id string to validate it against the schema.
 
 ###Schema
-Declare schemas before using the wrapper. A schema is a plain object with two requirements, 
+Declare schemas before using the wrapper. A schema is a plain object with three requirements, 
 
 1. values are unique
-2. includes the key `'dh-schema-title'`, for example, `'dh-schema-title': 'message'` 
+2. includes the key `'dh-title'`, for example, `'dh-title': 'message'` 
+2. includes the key `'dh-schema'`, for example, `'dh-schema': {...}` 
 
 ```javascript
 var messageSchema = {
-  'dh-schema-title': 'message',
-  'message': '.message',
-  'style': {
-    'normal': '.message__style'
-    'bold': '.message__style--bold',
-    'italics': '.message__style--italics'
-  },
-  'context': {
-    'warning': '.message__context--warning',
-    'accepted': '.message__context--highlight'
+  'dh-title': 'message',
+  'dh-schema': {
+    'message': '.message',
+    'style': {
+      'normal': '.message__style'
+      'bold': '.message__style--bold',
+      'italics': '.message__style--italics'
+    },
+    'context': {
+      'warning': '.message__context--warning',
+      'accepted': '.message__context--highlight'
+    }
   }
 };
 ```
@@ -35,7 +38,7 @@ var messageSchema = {
 
 ###DomHooks
 
-####DomHooks.schema()
+####DomHooks.addSchema()
 Include a schema.
 
 ```javascript
@@ -43,15 +46,11 @@ var messageSchema = {'dh-schema-title': 'message', ... };
 DomHooks.schema(messageSchema);
 ```
 
-###dh()
+###dh( [class|id] , ... )
 
-Validates a class or id string against a schema. Returns the string that is inside it. 
+Validates a class or id string against a schema. Has two parameters, a class or id and zero or more options. Returns the string that is inside it. 
 
 ```javascript
-var msg = dh('.message');
-$(msg).on('click', showMessage);
-
-//inline style
 $(dh('.message')).on('click', showMessage);
 ```
 
@@ -69,11 +68,14 @@ The input is not a string. Prints the input, file path, and line number.
 
 `DomHook Invalid: non-string "1" found at file path "client/chatroom.js", line 30`
 
-####dh().path()
+####options
 
+There can be zero or more options. Order does not matter. Options are comma separated strings. The following options are available.
+
+*path*
 Prints two messages to the console.
 
-`dh('messages').path();`
+`dh('messages', 'path');`
 
 *path*
 
