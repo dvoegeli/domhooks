@@ -56,13 +56,13 @@ $(dh('.message')).on('click', showMessage);
 
 If a class or id string is invalid, an error-like message prints to the console and continues program execution.
 
-*missing*
+*missing message*
 
 The tag is missing from the schema. Prints to console the tag, file path, and line number
 
 `DomHook Missing: schema missing for ".message--important" at file path "client/chatroom.js", line 45`
 
-*invalid*
+*invalid message*
 
 The input is not a string. Prints the input, file path, and line number.
 
@@ -73,17 +73,18 @@ The input is not a string. Prints the input, file path, and line number.
 There can be zero or more options. Order does not matter. Options are comma separated strings. The following options are available.
 
 *path*
+
 Prints two messages to the console.
 
 `dh('messages', 'path');`
 
-*path*
+*path message*
 
 Prints to console the tag, file path, and line number.
 
 `DomHook Path: ".message__context--accepted" expression is at file path "client/chatroom.js", line 10`
 
-*schema*
+*schema message*
 
 Prints to console the tag and the schema initialization's file path and line number.
 
