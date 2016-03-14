@@ -72,7 +72,7 @@ The input is not a string. Prints the input, file path, and line number.
 
 There can be zero or more options. Order does not matter. Options are comma separated strings. The following options are available.
 
-*path*
+**_path_**
 
 Prints two messages to the console.
 
