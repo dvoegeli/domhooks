@@ -3,13 +3,13 @@
 
 *At the moment, it only works for Meteor.js.*
 
-##Install
+## Install
 Include domhooks.js before class or id strings that use the schema.
 
-##Usage
+## Usage
 To use DomHooks, create a schema then wrap a class or id string to validate it against the schema.
 
-###Schema
+### Schema
 Declare schemas before using the wrapper. A schema is a plain object with three requirements, 
 
 1. values are unique
@@ -34,11 +34,11 @@ var messageSchema = {
 };
 ```
 
-##API
+## API
 
-###DomHooks
+### DomHooks
 
-####DomHooks.addSchema()
+#### DomHooks.addSchema()
 Include a schema.
 
 ```javascript
@@ -46,7 +46,7 @@ var messageSchema = {'dh-schema-title': 'message', ... };
 DomHooks.schema(messageSchema);
 ```
 
-###dh( [class|id] , ... )
+### dh( [class|id] , ... )
 
 Validates a class or id string against a schema. Has two parameters, a class or id and zero or more options. Returns the string that is inside it. 
 
@@ -56,19 +56,19 @@ $(dh('.message')).on('click', showMessage);
 
 If a class or id string is invalid, an error-like message prints to the console and continues program execution.
 
-*missing message*
+**missing message**
 
 The tag is missing from the schema. Prints to console the tag, file path, and line number
 
 `DomHook Missing: schema missing for ".message--important" at file path "client/chatroom.js", line 45`
 
-*invalid message*
+**invalid message**
 
 The input is not a string. Prints the input, file path, and line number.
 
 `DomHook Invalid: non-string "1" found at file path "client/chatroom.js", line 30`
 
-####options
+#### options
 
 There can be zero or more options. Order does not matter. Options are comma separated strings. The following options are available.
 
@@ -78,13 +78,13 @@ Prints two messages to the console.
 
 `dh('messages', 'path');`
 
-*path message*
+**path message**
 
 Prints to console the tag, file path, and line number.
 
 `DomHook Path: ".message__context--accepted" expression is at file path "client/chatroom.js", line 10`
 
-*schema message*
+**schema message**
 
 Prints to console the tag and the schema initialization's file path and line number.
 
